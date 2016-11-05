@@ -41,7 +41,10 @@ module.exports = {
   // Define loaders
   module: {
     loaders: [
-        { test: /.jsx?$/, loaders: [ 'babel-loader' ], include: Path.join(__dirname, 'src') }
+        { test: /\.css$/, loader: 'style!css', },
+        { test: /.jsx?$/, loaders: [ 'babel-loader' ], include: Path.join(__dirname, 'src') },
+        { test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/, loader: 'file-loader?name=assets/fonts/[hash].[ext]' },
+        { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?hash=sha512&digest=hex&name=assets/images/[hash].[ext]' },
       ].concat( 
         (IS_DEBUG_BUILD ? 
           [
@@ -55,7 +58,8 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [ '', '.js', '.jsx' ]
+    extensions: [ '', '.js', '.jsx' ],
+    modulesDirectories: [ 'node_modules', __dirname ],
   },
 
   plugins: [
