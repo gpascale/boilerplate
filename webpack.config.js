@@ -13,10 +13,7 @@ module.exports = {
     loaders: [
       { test: /\.css$/,  }
     ]
-  },
-  plugins: [
-    new ExtractTextPlugin("styles.css")
-  ]
+  }
 }
 
 module.exports = {
@@ -54,15 +51,16 @@ module.exports = {
             { test: /\.scss$/, loaders: ['style', 'css?' + cssRoot, 'sass'] }
           ] :
           [
-            { test: /\.scss$/, loader: ExtractSASS.extract(['css', 'sass']) }
+            { test: /\.scss$/, loader: ExtractSASS.extract(['css', 'sass'], { publicPath: '/' }) }
           ]
         )
       )
   },
 
   resolve: {
+    root: [ Path.resolve('.') ],
     extensions: [ '', '.js', '.jsx' ],
-    modulesDirectories: [ 'node_modules', __dirname ],
+    modulesDirectories: [ 'node_modules', __dirname, ],
   },
 
   plugins: [
