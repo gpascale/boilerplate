@@ -5,6 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const ExtractSASS = new ExtractTextPlugin(`/css/index.css`);
 
+console.log("DEBUG BUILD? " + IS_DEBUG_BUILD);
+var cssRoot = IS_DEBUG_BUILD ? ('root=' + Path.join(__dirname)) : '';
+
 module.exports = {
   module: {
     loaders: [
@@ -48,7 +51,7 @@ module.exports = {
       ].concat( 
         (IS_DEBUG_BUILD ? 
           [
-            { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
+            { test: /\.scss$/, loaders: ['style', 'css?' + cssRoot, 'sass'] }
           ] :
           [
             { test: /\.scss$/, loader: ExtractSASS.extract(['css', 'sass']) }
