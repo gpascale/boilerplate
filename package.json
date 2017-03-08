@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.js --watch --colors",
-    "build": "rm -rf dist/ && NODE_ENV=production webpack --colors --profile",
-    "test": "npm test",
+    "build": "npm test && rm -rf dist/ && NODE_ENV=production webpack --colors --profile",
+    "test": "mocha --compilers js:babel-core/register",
     "start": "PORT=8080 pm2 start ./server.js"
   },
   "author": "Greg Pascale (greg.pascale@gmail.com)",
@@ -22,6 +22,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.1",
+    "mocha": "^3.2.0",
     "node-sass": "^3.11.2",
     "pm2": "^2.1.4",
     "react-dom": "^15.3.2",
