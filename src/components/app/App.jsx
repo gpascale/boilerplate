@@ -1,8 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 const guy = require('assets/images/guy-fieri.jpg');
 
-var App = React.createClass({
-  render: () => {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render () {
     return (
       <div className="app">
         Hello world!
@@ -10,6 +15,6 @@ var App = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default App;
