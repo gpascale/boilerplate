@@ -1,10 +1,10 @@
 import React from 'react';
 const guy = require('assets/images/guy-fieri.jpg');
 
-var Hello = React.createClass({
+var App = React.createClass({
   render: () => {
     return (
-      <div className="hello">
+      <div className="app">
         Hello world!
         <img src={guy} />
       </div>
@@ -12,4 +12,4 @@ var Hello = React.createClass({
   }
 });
 
-export default Hello;
+export default App;
