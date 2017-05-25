@@ -8,7 +8,7 @@
     "build": "npm test && rm -rf dist/ && NODE_ENV=production webpack --colors --profile",
     "test": "mocha --compilers js:babel-core/register",
     "start": "PORT=8080 pm2 start ./server.js",
-    "lint": "node node_modules/eslint/bin/eslint.js --ext js,jsx src/; exit 0"
+    "lint": "node node_modules/eslint/bin/eslint.js -c .eslintrc-prod.json --ext js,jsx src/; exit 0"
   },
   "author": "Greg Pascale (greg.pascale@gmail.com)",
   "license": "ISC",
